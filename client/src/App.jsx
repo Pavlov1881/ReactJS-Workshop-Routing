@@ -9,7 +9,11 @@ function App() {
 
             <Header />
 
-            <Home />
+            <Routes>
+                <Route path='/' element={<Home />} />
+            </Routes>
+
+
 
         </div>
     )
