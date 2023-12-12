@@ -3,7 +3,7 @@ import { request } from "../lib/request";
 
 
 export const getAll = async () => {
-    const result = request('GET', baseUrl);
+    const result = await request('GET', baseUrl);
 
     return Object.values(result);
 };
@@ -11,7 +11,7 @@ export const getAll = async () => {
 
 export const create = async (gameData) => {
 
-    const response = await fetch(`${baseUrl}/games`, {
+    const response = await fetch(baseUrl, {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
         body: JSON.stringify(gameData)         // правим обекта на стринг
