@@ -1,4 +1,13 @@
-const baseUrl = 'http://localhost:3030/jsonstore'
+const baseUrl = 'http://localhost:3030/jsonstore/games';
+import { request } from "../lib/request";
+
+
+export const getAll = async () => {
+    const result = request('GET', baseUrl);
+
+    return Object.values(result);
+};
+
 
 export const create = async (gameData) => {
 
@@ -13,4 +22,6 @@ export const create = async (gameData) => {
     // console.log(result);
 
     return result;
-}
+};
+
+
