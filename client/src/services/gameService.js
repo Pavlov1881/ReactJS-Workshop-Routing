@@ -5,10 +5,12 @@ export const create = async (gameData) => {
     const response = await fetch(`${baseUrl}/games`, {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
-        body: JSON.stringify(gameData)                      // правим обекта на стринг
+        body: JSON.stringify(gameData)         // правим обекта на стринг
     });
 
     const result = await response.json();
+
+    // console.log(result);
 
     return result;
 }
