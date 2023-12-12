@@ -1,12 +1,18 @@
+import { useNavigate } from 'react-router-dom';
 import * as gameService from "../../services/gameService";
 
 export default function GameCreate() {
+
+    const navigate = useNavigate();
 
     const createGameSubmitHandler = async (e) => {
         e.preventDefault();
         // взимаме данните от формата
         const gameData = Object.fromEntries(new FormData(e.currentTarget));
-        const result = await gameService.create(gameData);
+
+        await gameService.create(gameData);
+
+        navigate('/games');
     }
 
     return (
