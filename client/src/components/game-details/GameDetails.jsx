@@ -6,26 +6,30 @@ import * as commentService from '../../services/commentService';
 
 export default function GameDetails() {
     const [game, setGame] = useState({});
+    const [comments, setComments] = useState([]);
     const { gameId } = useParams();
 
     useEffect(() => {
         gameService.getOne(gameId)
             .then(setGame);
+
+        commentService.getAll(gameId)
+            .then(setComments);
     }, [gameId]);
 
-
     const addCommentHandler = async (e) => {
+        e.preventDefault();
 
         const formData = new FormData(e.currentTarget);
 
-        await commentService.create(
+        const newComment = await commentService.create(
             gameId,
             formData.get('username'),
-            formData.get('comment'),
-        )
+            formData.get('comment')
+        );
 
+        setComments(state => [...state, newComment]);
     }
-
 
     return (
         <section id="game-details">
@@ -40,40 +44,36 @@ export default function GameDetails() {
 
                 <p className="text">{game.summary}</p>
 
-                {/* <!-- Bonus ( for Guests and Users ) -->
                 <div className="details-comments">
                     <h2>Comments:</h2>
                     <ul>
-                        <!-- list all comments for current game (If any) -->
-                        <li className="comment">
-                            <p>Content: I rate this one quite highly.</p>
-                        </li>
-                        <li className="comment">
-                            <p>Content: The best game.</p>
-                        </li>
+                        {comments.map(({ _id, username, text }) => (
+                            <li key={_id} className="comment">
+                                <p>{username}: {text}</p>
+                            </li>
+                        ))}
                     </ul>
-                    <!-- Display paragraph: If there are no games in the database -->
-                    <p className="no-comment">No comments.</p>
+
+                    {comments.length === 0 && (
+                        <p className="no-comment">No comments.</p>
+                    )}
                 </div>
 
-                <!-- Edit/Delete buttons ( Only for creator of this game )  -->
+                {/* <!-- Edit/Delete buttons ( Only for creator of this game )  -->
                 <div className="buttons">
                     <a href="#" className="button">Edit</a>
                     <a href="#" className="button">Delete</a>
                 </div> */}
             </div>
 
-            {/* < !--Bonus --> */}
-            {/* <!-- Add Comment ( Only for logged-in users, which is not creators of the current game ) --> */}
-            <article classname="create-comment">
+            <article className="create-comment">
                 <label>Add new comment:</label>
-                <form classname="form" onSubmit={addCommentHandler}>
+                <form className="form" onSubmit={addCommentHandler}>
                     <input type="text" name="username" placeholder="username" />
-                    <textarea name="comment" placeholder="Comment......" defaultValue={""} />
-                    <input classname="btn submit" type="submit" defaultValue="Add Comment" />
+                    <textarea name="comment" placeholder="Comment......"></textarea>
+                    <input className="btn submit" type="submit" value="Add Comment" />
                 </form>
             </article>
-
         </section>
     );
 }
