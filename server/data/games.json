@@ -1,3 +1,26 @@
 {
-  
+    "53b90b8e-b5b3-49cb-ab0f-8424551e1f69": {
+        "title": "Mortal Kombat Ultimate",
+        "category": "Action",
+        "maxLevel": "22",
+        "imageUrl": "https://www.technopolis.bg/medias/sys_master/h38/h51/13819934113822.jpg",
+        "summary": "Игра MORTAL KOMBAT 11 ULTIMATE EDITION PLAYSTATION 4 PS4",
+        "_id": "53b90b8e-b5b3-49cb-ab0f-8424551e1f69"
+    },
+    "87626178-70c2-4187-b985-0bb8676c677d": {
+        "title": "FIFA 2023 World Cup",
+        "category": "Sport",
+        "maxLevel": "1",
+        "imageUrl": "https://gameindustry.bg/cms/wp-content/uploads/2022/10/main.jfif",
+        "summary": "This is the oldest football game!\n",
+        "_id": "87626178-70c2-4187-b985-0bb8676c677d"
+    },
+    "c870ff5a-e722-42f4-869c-7ce9d10839a4": {
+        "title": "Counter Strike",
+        "category": "Shooting",
+        "maxLevel": "12",
+        "imageUrl": "https://media.steampowered.com/apps/csgo/blog/images/fb_image.png?v=6",
+        "summary": "Earn XP by playing in official game modes and rank up your CS:GO Profile. When you reach the Global General (Rank 40), you’ll have the option to reset your Profile Rank and earn (or upgrade) a 2023 Service Medal. The medal is an inspectable display item you can show off wherever your avatar is shown.",
+        "_id": "c870ff5a-e722-42f4-869c-7ce9d10839a4"
+    }
 }
